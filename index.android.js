@@ -3,19 +3,24 @@ import {
     AppRegistry,
     StyleSheet,
     Text,
-    View
+    View,
+    Image
 } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Card, CardItem, Grid, Col, Row } from 'native-base';
+import graphPage from './graphPage'
+import { DrawerNavigator, StackNavigator } from "react-navigation";
+import { Container, Header, Title, Content, Footer, FooterTab,
+    Button, Left, Right, Body, Icon, Card, CardItem, Grid, Col,
+    Row,List,ListItem } from 'native-base';
 
 
 export default class AiroHealth extends Component {
     render() {
         return (
-            <View style={{flex: 1, flexDirection: 'row'}}>
             <Container>
                 <Header>
                     <Left>
-                        <Button transparent>
+                        <Button transparent
+                        onPress={()=>this.props.navigation.navigate('graphPage')}>
                             <Icon name='menu' />
                         </Button>
                     </Left>
@@ -36,57 +41,105 @@ export default class AiroHealth extends Component {
                     </Card>
                     <Grid>
                         <Col style={{ backgroundColor: 'green', height: 60 }}>
-                            <Text style={{textAlign:'left',fontSize:16,color:'white'}}>PROGRESS</Text>
+                            <Text style={{textAlign:'left',fontSize:17,color:'white'}}>PROGRESS</Text>
                         </Col>
                         <Col style={{ backgroundColor: 'green', height: 60  }}>
-                            <Text style={{fontWeight:'bold', textAlign:'right',fontSize:16,color:'white'}}>ON TRACK</Text>
+                            <Text style={{fontWeight:'bold', textAlign:'right',fontSize:17,color:'white'}}>ON TRACK</Text>
                         </Col>
                     </Grid>
 
-
-                    //START HERE
                     <Grid>
-                        <Col style={{ backgroundColor: '#D954D7', height: 200 }}></Col>
-                        <Col style={{ backgroundColor: '#A234D3', height: 200 }}></Col>
+                        <Col>
+                            <Row>
+                                <Text style={styles.titleText}>Calories</Text>
+                            </Row>
+                            <Row>
+                                <Text style={{fontSize:27, fontWeight:'bold', color:'green',margin:10}}>1430</Text>
+                            </Row>
+                        </Col>
+                        <Col>
+                            <Image style={{height:30,width:40,padding:40}} source={require('./icons/progressBar.png')} />
+                        </Col>
+                        <Col>
+                            <Row>
+                                <Text style={styles.titleText}>Active</Text>
+                            </Row>
+                            <Row>
+                                <Text style={{fontSize:27, fontWeight:'bold', color:'dodgerblue',margin:10}}>Low</Text>
+                            </Row>
+                        </Col>
+                        <Col>
+                            <Image style={{height:30,width:40,padding:40}} source={require('./icons/running.png')} />
+                        </Col>
                     </Grid>
 
                     <Grid>
-                        <Col style={{ backgroundColor: 'purple', height: 200 }}></Col>
-                        <Col style={{ backgroundColor: 'yellow', height: 200  }}></Col>
+                        <Col>
+                            <Row>
+                                <Text style={styles.titleText}>Pulse</Text>
+                            </Row>
+                            <Row>
+                                <Text style={{fontSize:27, fontWeight:'bold', color:'orange',margin:10}}>70bpm</Text>
+                            </Row>
+                        </Col>
+                        <Col>
+                            <Image style={{height:30,width:40,padding:40}} source={require('./icons/pulse.png')} />
+                        </Col>
+                        <Col>
+                            <Row>
+                                <Text style={styles.titleText}>Stress</Text>
+                            </Row>
+                            <Row>
+                                <Text style={{fontSize:27, fontWeight:'bold', color:'red',margin:10}}>High</Text>
+                            </Row>
+                        </Col>
+                        <Col>
+                            <Image style={{height:30,width:40,padding:40}} source={require('./icons/stress.png')} />
+                        </Col>
                     </Grid>
 
+                    <Grid>
+                        <Col style={{backgroundColor: 'red', height: 60 }}>
+                            <Text style={{textAlign:'left',fontSize:17,color:'white'}}>GOALS</Text>
+                        </Col>
+                        <Col style={{backgroundColor: 'red', height: 60  }}>
+                            <Text style={{fontWeight:'bold', textAlign:'right',fontSize:17,color:'white'}}>3/5</Text>
+                        </Col>
+                    </Grid>
 
-
-
-                    {/*<View style={{flex: 1, flexDirection: 'row'}}>*/}
-                        {/*<View style={{width: 207, height: 207, backgroundColor: 'powderblue'}} />*/}
-                        {/*<View style={{width: 207, height: 207, backgroundColor: 'skyblue'}} />*/}
-                    {/*</View>*/}
-
-                    {/*<View style={{flex: 1, flexDirection: 'row'}}>*/}
-                        {/*<View style={{width: 207, height: 207, backgroundColor: 'purple'}} />*/}
-                        {/*<View style={{width: 207, height: 207, backgroundColor: 'yellow'}} />*/}
-                    {/*</View>*/}
-
-
-
-
-
+                    <List>
+                        <ListItem>
+                            <Text style={{fontSize:17, fontWeight:'bold'}}> Random Goal 1</Text>
+                        </ListItem>
+                        <ListItem>
+                            <Text style={{fontSize:17, fontWeight:'bold'}}> Superior Goal 36</Text>
+                        </ListItem>
+                        <ListItem>
+                            <Text style={{fontSize:17, fontWeight:'bold'}}> Superior Goal 22</Text>
+                        </ListItem>
+                        <ListItem>
+                            <Text> Superior Goal 11</Text>
+                        </ListItem>
+                        <ListItem>
+                            <Text> Random Goal 7</Text>
+                        </ListItem>
+                    </List>
 
 
 
                 </Content>
 
             </Container>
-            </View>
+
         );
     }
 }
 
 const styles = StyleSheet.create({
     titleText: {
-        fontSize: 20,
+        fontSize: 23,
         fontWeight: 'bold',
+
     },
 });
 AppRegistry.registerComponent('AiroHealth', () => AiroHealth);
