@@ -42,11 +42,14 @@ export default class AiroHealth extends Component {
                             <Text style={{fontWeight:'bold', textAlign:'right',fontSize:16,color:'white'}}>ON TRACK</Text>
                         </Col>
                     </Grid>
-                    
+
+
+                    //START HERE
                     <Grid>
                         <Col style={{ backgroundColor: '#D954D7', height: 200 }}></Col>
                         <Col style={{ backgroundColor: '#A234D3', height: 200 }}></Col>
                     </Grid>
+
                     <Grid>
                         <Col style={{ backgroundColor: 'purple', height: 200 }}></Col>
                         <Col style={{ backgroundColor: 'yellow', height: 200  }}></Col>
